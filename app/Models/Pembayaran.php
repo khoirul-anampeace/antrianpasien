@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Poli extends Model
+class Pembayaran extends Model
 {
     use HasFactory;
-
-    protected $table = 'poli';
+    protected $table = 'pembayaran';
     protected $fillable = [
-        'kode_poli',
-        'nama_poli'
+        'kode_pembayaran',
+        'jenis_pembayaran'
     ];
 }

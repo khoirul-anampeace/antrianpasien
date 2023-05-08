@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use Exception;
+use App\Models\Pembayaran;
+use Illuminate\Http\Request;
 use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
-use App\Models\Poli;
-use Exception;
-use Illuminate\Http\Request;
 
-class PoliController extends Controller
+class PembayaranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +17,12 @@ class PoliController extends Controller
      */
     public function index()
     {
-        $data  = Poli::all();
+        $data = Pembayaran::all();
 
         if ($data) {
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return ApiFormatter::createApi(200, 'success', $data);
         } else {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return ApiFormatter::createApi(400, 'failed');
         }
     }
 
@@ -46,16 +46,16 @@ class PoliController extends Controller
     {
         try {
             $request->validate([
-                'kode_poli' => 'required|max:6|string',
-                'nama_poli' => 'required|max:100|string'
+                'kode_pembayaran' => 'required|max:6|string',
+                'jenis_pembayaran' => 'required|string|max:100'
             ]);
 
-            $poli = Poli::create([
-                'kode_poli' => $request->id_poli,
-                'nama_poli' => $request->nama_poli
+            $pembayaran = Pembayaran::create([
+                'kode_pembayaran' => $request->kode_pembayaran,
+                'jenis_pembayaran' => $request->jenis_pembayaran
             ]);
 
-            $data = Poli::where('id', '=', $poli->id)->get();
+            $data = Pembayaran::where('id', '=', $pembayaran->id)->get();
 
             if ($data) {
                 return ApiFormatter::createApi(200, 'Success', $data);
@@ -75,7 +75,7 @@ class PoliController extends Controller
      */
     public function show($id)
     {
-        $data = Poli::where('id', '=', $id)->get();
+        $data = Pembayaran::where('id', '=', $id)->get();
 
         if ($data) {
             return ApiFormatter::createApi(200, 'Success', $data);
@@ -106,19 +106,19 @@ class PoliController extends Controller
     {
         try {
             $request->validate([
-                'nama_poli' => 'required|max:100|string'
+                'jenis_pembayaran' => 'required|string|max:100'
             ]);
 
-            $poli = Poli::findOrFail($id);
+            $pembayaran = Pembayaran::findOrFail($id);
             // $poli = Poli::where('id_poli', '=', $id)->firstOrFail();
 
             // $poli = Poli::find($id);
-            $poli->update([
-                'nama_poli' => $request->nama_poli
+            $pembayaran->update([
+                'jenis_pembayaran' => $request->jenis_pembayaran
             ]);
 
 
-            $data = Poli::where('id', '=', $poli->id)->get();
+            $data = Pembayaran::where('id', '=', $pembayaran->id)->get();
 
             if ($data) {
                 return ApiFormatter::createApi(200, 'Success', $data);
@@ -139,9 +139,9 @@ class PoliController extends Controller
     public function destroy($id)
     {
         try {
-            $poli = Poli::findOrFail($id);
+            $pembayaran = Pembayaran::findOrFail($id);
             // echo $poli;
-            $data  = $poli->delete();
+            $data  = $pembayaran->delete();
 
             if ($data) {
                 return ApiFormatter::createApi(200, 'Success');

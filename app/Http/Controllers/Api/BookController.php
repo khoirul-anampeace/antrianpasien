@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use Exception;
+use App\Models\Book;
+use Illuminate\Http\Request;
 use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
-use App\Models\Poli;
-use Exception;
-use Illuminate\Http\Request;
 
-class PoliController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +17,12 @@ class PoliController extends Controller
      */
     public function index()
     {
-        $data  = Poli::all();
+        $data = Book::all();
 
         if ($data) {
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return ApiFormatter::createApi(200, 'success', $data);
         } else {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return ApiFormatter::createApi(400, 'failed');
         }
     }
 
@@ -46,16 +46,26 @@ class PoliController extends Controller
     {
         try {
             $request->validate([
-                'kode_poli' => 'required|max:6|string',
-                'nama_poli' => 'required|max:100|string'
+                'kode_registrasi' => 'required',
+                'no_antrian' => 'required',
+                'nik' => 'required',
+                'kode_poli' => 'required',
+                'kode_dokter' => 'required',
+                'kode_pembayaran' => 'required',
+                'tanggal_booking' => 'required'
             ]);
 
-            $poli = Poli::create([
-                'kode_poli' => $request->id_poli,
-                'nama_poli' => $request->nama_poli
+            $book = Book::create([
+                'kode_registrasi' => $request->kode_registrasi,
+                'no_antrian' => $request->no_antrian,
+                'nik' => $request->nik,
+                'kode_poli' => $request->kode_poli,
+                'kode_dokter' => $request->kode_dokter,
+                'kode_pembayaran' => $request->kode_pembayaran,
+                'tanggal_booking' => $request->tanggal_booking
             ]);
 
-            $data = Poli::where('id', '=', $poli->id)->get();
+            $data = Book::where('id', '=', $book->id)->get();
 
             if ($data) {
                 return ApiFormatter::createApi(200, 'Success', $data);
@@ -75,7 +85,7 @@ class PoliController extends Controller
      */
     public function show($id)
     {
-        $data = Poli::where('id', '=', $id)->get();
+        $data = Book::where('id', '=', $id)->get();
 
         if ($data) {
             return ApiFormatter::createApi(200, 'Success', $data);
@@ -106,19 +116,25 @@ class PoliController extends Controller
     {
         try {
             $request->validate([
-                'nama_poli' => 'required|max:100|string'
+                'kode_poli' => 'required',
+                'kode_dokter' => 'required',
+                'kode_pembayaran' => 'required',
+                'tanggal_booking' => 'required'
             ]);
 
-            $poli = Poli::findOrFail($id);
+            $book = Book::findOrFail($id);
             // $poli = Poli::where('id_poli', '=', $id)->firstOrFail();
 
             // $poli = Poli::find($id);
-            $poli->update([
-                'nama_poli' => $request->nama_poli
+            $book->update([
+                'kode_poli' => $request->kode_poli,
+                'kode_dokter' => $request->kode_dokter,
+                'kode_pembayaran' => $request->kode_pembayaran,
+                'tanggal_booking' => $request->tanggal_booking
             ]);
 
 
-            $data = Poli::where('id', '=', $poli->id)->get();
+            $data = Book::where('id', '=', $book->id)->get();
 
             if ($data) {
                 return ApiFormatter::createApi(200, 'Success', $data);
@@ -139,9 +155,9 @@ class PoliController extends Controller
     public function destroy($id)
     {
         try {
-            $poli = Poli::findOrFail($id);
+            $book = Book::findOrFail($id);
             // echo $poli;
-            $data  = $poli->delete();
+            $data  = $book->delete();
 
             if ($data) {
                 return ApiFormatter::createApi(200, 'Success');

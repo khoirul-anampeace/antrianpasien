@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use Exception;
+use App\Models\Dokter;
+use Illuminate\Http\Request;
 use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
-use App\Models\Poli;
-use Exception;
-use Illuminate\Http\Request;
 
-class PoliController extends Controller
+class DokterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +17,12 @@ class PoliController extends Controller
      */
     public function index()
     {
-        $data  = Poli::all();
+        $data = Dokter::all();
 
         if ($data) {
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return ApiFormatter::createApi(200, 'success', $data);
         } else {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return ApiFormatter::createApi(400, 'failed');
         }
     }
 
@@ -46,16 +46,16 @@ class PoliController extends Controller
     {
         try {
             $request->validate([
-                'kode_poli' => 'required|max:6|string',
-                'nama_poli' => 'required|max:100|string'
+                'kode_dokter' => 'required|max:6|string',
+                'nama_dokter' => 'required|string|max:100'
             ]);
 
-            $poli = Poli::create([
-                'kode_poli' => $request->id_poli,
-                'nama_poli' => $request->nama_poli
+            $dokter = Dokter::create([
+                'kode_dokter' => $request->kode_dokter,
+                'nama_dokter' => $request->nama_dokter
             ]);
 
-            $data = Poli::where('id', '=', $poli->id)->get();
+            $data = Dokter::where('id', '=', $dokter->id)->get();
 
             if ($data) {
                 return ApiFormatter::createApi(200, 'Success', $data);
@@ -75,7 +75,7 @@ class PoliController extends Controller
      */
     public function show($id)
     {
-        $data = Poli::where('id', '=', $id)->get();
+        $data = Dokter::where('id', '=', $id)->get();
 
         if ($data) {
             return ApiFormatter::createApi(200, 'Success', $data);
@@ -106,19 +106,19 @@ class PoliController extends Controller
     {
         try {
             $request->validate([
-                'nama_poli' => 'required|max:100|string'
+                'nama_dokter' => 'required|string|max:100'
             ]);
 
-            $poli = Poli::findOrFail($id);
+            $dokter = Dokter::findOrFail($id);
             // $poli = Poli::where('id_poli', '=', $id)->firstOrFail();
 
             // $poli = Poli::find($id);
-            $poli->update([
-                'nama_poli' => $request->nama_poli
+            $dokter->update([
+                'nama_dokter' => $request->nama_dokter
             ]);
 
 
-            $data = Poli::where('id', '=', $poli->id)->get();
+            $data = Dokter::where('id', '=', $dokter->id)->get();
 
             if ($data) {
                 return ApiFormatter::createApi(200, 'Success', $data);
@@ -139,9 +139,9 @@ class PoliController extends Controller
     public function destroy($id)
     {
         try {
-            $poli = Poli::findOrFail($id);
+            $dokter = Dokter::findOrFail($id);
             // echo $poli;
-            $data  = $poli->delete();
+            $data  = $dokter->delete();
 
             if ($data) {
                 return ApiFormatter::createApi(200, 'Success');
