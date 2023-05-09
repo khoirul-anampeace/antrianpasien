@@ -8,18 +8,28 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="../assets/images/logomerpati_sm.png">
+    <link rel="shortcut icon" href="{{ asset('img/hospital-logo.png') }}">
 
-    <link href="assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+    <!-- third party css -->
+    <link href="{{ asset('css/vendor/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css">
     <!-- third party css end -->
 
+    <!-- Datatables css -->
+    <link href="{{ asset('css/vendor/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/vendor/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('css/vendor/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/vendor/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/vendor/buttons.bootstrap5.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/vendor/select.bootstrap5.css') }}" rel="stylesheet" type="text/css">
+
     <!-- App css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style">
-    <link href="assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
+    <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/app.min.css') }}" rel="stylesheet" type="text/css" id="light-style">
+    <link href="{{ asset('css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style">
 
     <!-- style -->
-    <link rel="stylesheet" href="{{ asset(css / styleAdmin . css) }}">
+    <link rel="stylesheet" href="{{ asset('css/styleAdmin.css') }}">
 
 </head>
 
@@ -240,16 +250,16 @@
 
     <!-- bundle -->
     <script src="{{ asset('js/vendor.min.js') }}"></script>
-    <script src="assets/js/app.min.js"></script>
+    <script src="{{ asset('js/app.min.js') }}"></script>
 
     <!-- third party js -->
-    <script src="assets/js/vendor/apexcharts.min.js"></script>
-    <script src="assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="{{ asset('js/vendor/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/jquery-jvectormap-1.2.2.min.js') }}"></script>
+    <script src="{{ asset('js/pages/demo.dashboard.js') }}"></script>
     <!-- third party js ends -->
 
     <!-- demo app -->
-    <script src="assets/js/pages/demo.dashboard.js"></script>
+    <script src="{{ asset('js/pages/demo.dashboard.js') }}"></script>
     <!-- end demo js-->
 </body>
 
