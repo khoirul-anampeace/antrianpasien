@@ -43,7 +43,7 @@
             <!-- LOGO -->
             <a href=".?page=dashboard" class="logo text-center logo-light">
                 <span class="logo-lg">
-                    <img src="../assets/images/logomerpati.png" alt="" height="45">
+                    <img src="{{ asset('img/hospital-logo.png') }}" alt="" height="45">
                 </span>
                 <span class="logo-sm">
                     {{-- <img src="../assets/images/logomerpati_sm.png" alt="" height="45"> --}}
