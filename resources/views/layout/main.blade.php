@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Admin Merpati Rent Car</title>
+    <title>Admin Antrian Pasien</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
@@ -53,10 +53,10 @@
             <!-- LOGO -->
             <a href=".?page=dashboard " class="logo text-center logo-dark">
                 <span class="logo-lg">
-                    <img src="../assets/images/logomerpati.png" alt="" height="16">
+                    <img src="{{ asset('img/hospital-logo.png') }}" alt="" height="16">
                 </span>
                 <span class="logo-sm">
-                    {{-- <img src="../assets/images/logomerpati_sm.png" alt="" height="16"> --}}
+                    {{-- <img src="{{ asset('img/hospital-logo.png') }}" alt="" height="16"> --}}
                 </span>
             </a>
 
@@ -78,7 +78,7 @@
                             aria-controls="sidebarDashboards" class="side-nav-link">
                             <i class="uil-table"></i>
                             <!-- <span class="badge bg-success float-end">4</span> -->
-                            <span>Transaksi Lepas Kunci</span>
+                            <span>Transaksi BPJS</span>
                         </a>
                         <div class="collapse" id="sidebarDashboards">
                             <ul class="side-nav-second-level">
@@ -86,7 +86,7 @@
                                     <a href=".?page=transaksiBaruLepasKunci">Transaksi Baru</a>
                                 </li>
                                 <li>
-                                    <a href=".?page=pengembalianLepasKunci">Pengembalian</a>
+                                    <a href=".?page=pengembalianLepasKunci">Jadwal Pasien</a>
                                 </li>
                                 <li>
                                     <a href=".?page=semuaLepasKunci">Semua Transaksi</a>
@@ -99,7 +99,7 @@
                             aria-controls="sidebarDashboards" class="side-nav-link">
                             <i class="uil-table"></i>
                             <!-- <span class="badge bg-success float-end">4</span> -->
-                            <span>Transaksi Dengan Driver</span>
+                            <span>Transaksi Umum</span>
                         </a>
                         <div class="collapse" id="sidebarDashboards">
                             <ul class="side-nav-second-level">
@@ -107,7 +107,7 @@
                                     <a href=".?page=transaksiBaruDenganDriver">Transaksi Baru</a>
                                 </li>
                                 <li>
-                                    <a href=".?page=pengembalianDenganDriver">Pengembalian</a>
+                                    <a href=".?page=pengembalianDenganDriver">Jadwal Pasien</a>
                                 </li>
                                 <li>
                                     <a href=".?page=semuaDenganDriver">Semua Transaksi</a>
@@ -124,19 +124,19 @@
                     <li class="side-nav-item">
                         <a href=".?page=customer" class="side-nav-link">
                             <i class="uil-users-alt"></i>
-                            <span>Customer</span>
+                            <span>Pasien</span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href=".?page=mobil" class="side-nav-link">
                             <i class="uil-car"></i>
-                            <span>Mobil</span>
+                            <span>Dokter</span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href=".?page=driver" class="side-nav-link">
                             <i class="uil-users-alt"></i>
-                            <span>Paket Driver</span>
+                            <span></span>
                         </a>
                     </li>
                 </ul>
@@ -231,7 +231,7 @@
                         <div class="col-md-12">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> © Puskesma Sukapura
+                            </script> © Puskesmas Sukapura
                         </div>
                     </div>
                 </div>
