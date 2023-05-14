@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_dokter', 6)->unique();
             $table->string('nama_dokter', 100);
+            $table->string('kode_poli', 6);
             $table->timestamps();
         });
     }
