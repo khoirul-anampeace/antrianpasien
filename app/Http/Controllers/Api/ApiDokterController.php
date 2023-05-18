@@ -20,9 +20,9 @@ class ApiDokterController extends Controller
         $data = Dokter::all();
 
         if ($data) {
-            return ApiFormatter::createApi(200, 'success', $data);
+            return ApiFormatter::createApi(200, true, $data);
         } else {
-            return ApiFormatter::createApi(400, 'failed');
+            return ApiFormatter::createApi(400, false);
         }
     }
 
@@ -60,12 +60,12 @@ class ApiDokterController extends Controller
             $data = Dokter::where('id', '=', $dokter->id)->get();
 
             if ($data) {
-                return ApiFormatter::createApi(200, 'Success', $data);
+                return ApiFormatter::createApi(200, true, $data);
             } else {
-                return  ApiFormatter::createApi(400, 'Failed');
+                return  ApiFormatter::createApi(400, false);
             }
         } catch (Exception $error) {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -80,9 +80,9 @@ class ApiDokterController extends Controller
         $data = Dokter::where('id', '=', $id)->get();
 
         if ($data) {
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return ApiFormatter::createApi(200, true, $data);
         } else {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -125,12 +125,12 @@ class ApiDokterController extends Controller
             $data = Dokter::where('id', '=', $dokter->id)->get();
 
             if ($data) {
-                return ApiFormatter::createApi(200, 'Success', $data);
+                return ApiFormatter::createApi(200, true, $data);
             } else {
-                return  ApiFormatter::createApi(400, 'Failed');
+                return  ApiFormatter::createApi(400, false);
             }
         } catch (Exception $error) {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -148,12 +148,12 @@ class ApiDokterController extends Controller
             $data  = $dokter->delete();
 
             if ($data) {
-                return ApiFormatter::createApi(200, 'Success');
+                return ApiFormatter::createApi(200, true);
             } else {
-                return  ApiFormatter::createApi(400, 'Failed');
+                return  ApiFormatter::createApi(400, false);
             }
         } catch (Exception $error) {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 }

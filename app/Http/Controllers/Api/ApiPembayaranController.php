@@ -20,9 +20,9 @@ class ApiPembayaranController extends Controller
         $data = Pembayaran::all();
 
         if ($data) {
-            return ApiFormatter::createApi(200, 'success', $data);
+            return ApiFormatter::createApi(200, true, $data);
         } else {
-            return ApiFormatter::createApi(400, 'failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -58,12 +58,12 @@ class ApiPembayaranController extends Controller
             $data = Pembayaran::where('id', '=', $pembayaran->id)->get();
 
             if ($data) {
-                return ApiFormatter::createApi(200, 'Success', $data);
+                return ApiFormatter::createApi(200, true, $data);
             } else {
-                return  ApiFormatter::createApi(400, 'Failed');
+                return  ApiFormatter::createApi(400, false);
             }
         } catch (Exception $error) {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -78,9 +78,9 @@ class ApiPembayaranController extends Controller
         $data = Pembayaran::where('id', '=', $id)->get();
 
         if ($data) {
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return ApiFormatter::createApi(200, true, $data);
         } else {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -121,12 +121,12 @@ class ApiPembayaranController extends Controller
             $data = Pembayaran::where('id', '=', $pembayaran->id)->get();
 
             if ($data) {
-                return ApiFormatter::createApi(200, 'Success', $data);
+                return ApiFormatter::createApi(200, true, $data);
             } else {
-                return  ApiFormatter::createApi(400, 'Failed');
+                return  ApiFormatter::createApi(400, false);
             }
         } catch (Exception $error) {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -144,12 +144,12 @@ class ApiPembayaranController extends Controller
             $data  = $pembayaran->delete();
 
             if ($data) {
-                return ApiFormatter::createApi(200, 'Success');
+                return ApiFormatter::createApi(200, true, $data);
             } else {
-                return  ApiFormatter::createApi(400, 'Failed');
+                return  ApiFormatter::createApi(400, false);
             }
         } catch (Exception $error) {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 }

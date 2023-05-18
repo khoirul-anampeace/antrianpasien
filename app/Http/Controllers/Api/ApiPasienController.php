@@ -20,9 +20,9 @@ class ApiPasienController extends Controller
         $data = Pasien::all();
 
         if ($data) {
-            return ApiFormatter::createApi(200, 'success', $data);
+            return ApiFormatter::createApi(200, true, $data);
         } else {
-            return ApiFormatter::createApi(400, 'failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -62,12 +62,12 @@ class ApiPasienController extends Controller
             $data = Pasien::where('id', '=', $pasien->id)->get();
 
             if ($data) {
-                return ApiFormatter::createApi(200, 'Success', $data);
+                return ApiFormatter::createApi(200, true, $data);
             } else {
-                return  ApiFormatter::createApi(400, 'Failed');
+                return  ApiFormatter::createApi(400, false);
             }
         } catch (Exception $error) {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -82,9 +82,9 @@ class ApiPasienController extends Controller
         $data = Pasien::where('id', '=', $id)->get();
 
         if ($data) {
-            return ApiFormatter::createApi(200, 'Success', $data);
+            return ApiFormatter::createApi(200, true, $data);
         } else {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -129,12 +129,12 @@ class ApiPasienController extends Controller
             $data = Pasien::where('id', '=', $pasien->id)->get();
 
             if ($data) {
-                return ApiFormatter::createApi(200, 'Success', $data);
+                return ApiFormatter::createApi(200, true, $data);
             } else {
-                return  ApiFormatter::createApi(400, 'Failed');
+                return  ApiFormatter::createApi(400, false);
             }
         } catch (Exception $error) {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 
@@ -152,12 +152,12 @@ class ApiPasienController extends Controller
             $data  = $pasien->delete();
 
             if ($data) {
-                return ApiFormatter::createApi(200, 'Success');
+                return ApiFormatter::createApi(200, true, $data);
             } else {
-                return  ApiFormatter::createApi(400, 'Failed');
+                return  ApiFormatter::createApi(400, false);
             }
         } catch (Exception $error) {
-            return  ApiFormatter::createApi(400, 'Failed');
+            return  ApiFormatter::createApi(400, false);
         }
     }
 }
