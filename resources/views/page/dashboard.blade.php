@@ -11,25 +11,25 @@
 
                     <!-- <form class="d-flex">
 
-                                                    <div class="input-group">
+                                                                                                                                                                        <div class="input-group">
 
-                                                        <input type="text" class="form-control form-control-light" id="dash-daterange">
+                                                                                                                                                                            <input type="text" class="form-control form-control-light" id="dash-daterange">
 
-                                                        <span class="input-group-text bg-primary border-primary text-white">
+                                                                                                                                                                            <span class="input-group-text bg-primary border-primary text-white">
 
-                                                            <i class="mdi mdi-calendar-range font-13"></i>
+                                                                                                                                                                                <i class="mdi mdi-calendar-range font-13"></i>
 
-                                                        </span>
+                                                                                                                                                                            </span>
 
-                                                    </div>
+                                                                                                                                                                        </div>
 
-                                                    <a href="javascript: void(0);" class="btn btn-primary ms-2">
+                                                                                                                                                                        <a href="javascript: void(0);" class="btn btn-primary ms-2">
 
-                                                        <i class="mdi mdi-autorenew"></i>
+                                                                                                                                                                            <i class="mdi mdi-autorenew"></i>
 
-                                                    </a>
+                                                                                                                                                                        </a>
 
-                                                </form> -->
+                                                                                                                                                                    </form> -->
 
                 </div>
 
@@ -47,7 +47,7 @@
 
     <div class="row">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
 
             <div class="card text-white bg-info overflow-hidden" style="height: 130px;">
 
@@ -55,9 +55,9 @@
 
                     <div class="toll-free-box">
 
-                        <h3> <i class="mdi mdi-deskphone"></i>Rp 999</h3>
+                        <h3> <i class="mdi mdi-deskphone"></i>{{ $jumlahdokter }}</h3>
 
-                        <p>Total Uang Masuk Transaksi Lepas Kunci</p>
+                        <p>Total Dokter</p>
 
                     </div>
 
@@ -67,7 +67,7 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
 
             <div class="card text-white bg-warning overflow-hidden" style="height: 130px;">
 
@@ -75,9 +75,9 @@
 
                     <div class="toll-free-box">
 
-                        <h3> <i class="mdi mdi-deskphone"></i>Rp 999</h3>
+                        <h3> <i class="mdi mdi-deskphone"></i>{{ $jumlahpasien }}</h3>
 
-                        <p>Total Uang Masuk Transaksi Dengan Driver</p>
+                        <p>Total Pasien</p>
 
                     </div>
 
@@ -87,7 +87,7 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
 
             <div class="card bg-success text-white overflow-hidden" style="height: 130px;">
 
@@ -95,9 +95,29 @@
 
                     <div class="toll-free-box">
 
-                        <h3> <i class="mdi mdi-deskphone"></i>Rp 999</h3>
+                        <h3> <i class="mdi mdi-deskphone"></i>{{ $jumlahbookhariini }}</h3>
 
-                        <p>Total Transaksi Uang Masuk </p>
+                        <p>Total Book Perhari</p>
+
+                    </div>
+
+                </div> <!-- end card-body-->
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card bg-primary text-white overflow-hidden" style="height: 130px;">
+
+                <div class="card-body">
+
+                    <div class="toll-free-box">
+
+                        <h3> <i class="mdi mdi-deskphone"></i>{{ $jumlahbookperminggu }}</h3>
+
+                        <p>Total Book Perminggu</p>
 
                     </div>
 
@@ -111,7 +131,7 @@
 
 
 
-    <div class="row">
+    {{-- <div class="row">
 
         <div class="col-xl-3 col-lg-4">
 
@@ -193,5 +213,5 @@
 
 
 
-    </div>
+    </div> --}}
 @endsection

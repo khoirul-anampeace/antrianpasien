@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dokter;
-use Carbon\Carbon;
+use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class DashboardController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,22 +14,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $dokter = DB::table('dokter')
-        //     // ->join('poli', 'poli.kode_poli', '=', 'dokter.kode_poli')
-        //     ->select(DB::raw('COUNT(kode_dokter) AS jumlah'))
-        //     // ->where('')
-        //     ->get();
-        $jumlahdokter = DB::table('dokter')->count();
-        $jumlahpasien = DB::table('pasien')->count();
-        $jumlahbookhariini = DB::table('book')
-            ->whereDate('created_at', Carbon::today())->count();
-        $jumlahbookpermimggu = DB::table('book')
-            ->whereBetween(
-                'created_at',
-                [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
-            )->count();
-        $jumlahbook = DB::table('book')->count();
-        return view('page.dashboard')->with(['jumlahdokter' => $jumlahdokter, 'jumlahpasien' => $jumlahpasien, 'jumlahbookhariini' => $jumlahbookhariini, 'jumlahbookperminggu' => $jumlahbookpermimggu, 'jumlahbook' => $jumlahbook]);
+        $data = Admin::all();
+        return view('page.admin')->with(['data' => $data]);
     }
 
     /**
@@ -41,7 +25,9 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+
+        $kode = Admin::kode();
+        return view('page.createadmin')->with(['kode' => $kode]);
     }
 
     /**
@@ -52,7 +38,11 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except(['_token']);
+
+        Admin::insert($data);
+
+        return redirect('/admin');
     }
 
     /**
@@ -63,7 +53,8 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Admin::findOrFail($id);
+        return view('page.showadmin')->with(['data' => $data]);
     }
 
     /**
@@ -86,7 +77,10 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = Admin::findOrFail($id);
+        $data = $request->except(['_token']);
+        $item->update($data);
+        return redirect('/admin');
     }
 
     /**
@@ -97,6 +91,8 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Admin::findOrFail($id);
+        $item->delete();
+        return redirect('/admin');
     }
 }

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dokter;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class DashboardController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,22 +13,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $dokter = DB::table('dokter')
-        //     // ->join('poli', 'poli.kode_poli', '=', 'dokter.kode_poli')
-        //     ->select(DB::raw('COUNT(kode_dokter) AS jumlah'))
-        //     // ->where('')
-        //     ->get();
-        $jumlahdokter = DB::table('dokter')->count();
-        $jumlahpasien = DB::table('pasien')->count();
-        $jumlahbookhariini = DB::table('book')
-            ->whereDate('created_at', Carbon::today())->count();
-        $jumlahbookpermimggu = DB::table('book')
-            ->whereBetween(
-                'created_at',
-                [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
-            )->count();
-        $jumlahbook = DB::table('book')->count();
-        return view('page.dashboard')->with(['jumlahdokter' => $jumlahdokter, 'jumlahpasien' => $jumlahpasien, 'jumlahbookhariini' => $jumlahbookhariini, 'jumlahbookperminggu' => $jumlahbookpermimggu, 'jumlahbook' => $jumlahbook]);
+        return view('page.login');
     }
 
     /**

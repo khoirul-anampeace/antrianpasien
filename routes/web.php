@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\LoginController;
@@ -53,8 +54,16 @@ Route::get('/pembayaran/show/{id}', [PembayaranController::class, 'show']);
 Route::post('/pembayaran/update/{id}', [PembayaranController::class, 'update']);
 Route::get('/pembayaran/destroy/{id}', [PembayaranController::class, 'destroy']);
 
+// Book
+Route::get('/semuabook', [BookController::class, 'index']);
+
 // Admin
 Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin/create', [AdminController::class, 'create']);
+Route::post('/admin/store', [AdminController::class, 'store']);
+Route::get('/admin/show/{id}', [AdminController::class, 'show']);
+Route::post('/admin/update/{id}', [AdminController::class, 'update']);
+Route::get('/admin/destroy/{id}', [AdminController::class, 'destroy']);
 
 Route::get('/login', [LoginController::class, 'index']);
 // Route::get('/login', view('page.login'));
