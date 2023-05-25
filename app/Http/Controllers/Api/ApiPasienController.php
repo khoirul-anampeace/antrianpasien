@@ -46,7 +46,7 @@ class ApiPasienController extends Controller
     {
         try {
             $request->validate([
-                'nik' => 'required|min:16|max:16',
+                'nik' => 'required',
                 'nama_pasien' => 'required',
                 'tanggal_lahir' => 'required|date',
                 'no_kontak' => 'required|string'

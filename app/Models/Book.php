@@ -16,6 +16,7 @@ class Book extends Model
         'kode_poli',
         'kode_dokter',
         'kode_pembayaran',
-        'tanggal_booking'
+        'tanggal_booking',
+        'status'
     ];
 }

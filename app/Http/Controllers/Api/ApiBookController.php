@@ -52,7 +52,8 @@ class ApiBookController extends Controller
                 'kode_poli' => 'required',
                 'kode_dokter' => 'required',
                 'kode_pembayaran' => 'required',
-                'tanggal_booking' => 'required'
+                'tanggal_booking' => 'required',
+                'status' => 'required'
             ]);
 
             $book = Book::create([
@@ -62,7 +63,8 @@ class ApiBookController extends Controller
                 'kode_poli' => $request->kode_poli,
                 'kode_dokter' => $request->kode_dokter,
                 'kode_pembayaran' => $request->kode_pembayaran,
-                'tanggal_booking' => $request->tanggal_booking
+                'tanggal_booking' => $request->tanggal_booking,
+                'status' => $request->status
             ]);
 
             $data = Book::where('id', '=', $book->id)->get();

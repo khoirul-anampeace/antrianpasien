@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url("../img/bglogin.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+section {
+    /* background-color: aliceblue; */
+    /* padding: 100px; */
+}
+.loginform {
+    background-color: rgba(240, 248, 255, 0.924);
+    padding: 30px;
+    width: 100%;
+    border-radius: 5px;
+    /* height: 100vh; */
+}
+.loginform h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+.btn {
+    width: 100%;
+    background-color: #50c2c9;
+    border: none !important;
+}
+.btn:hover {
+    background-color: #40b5bb;
+}
+input {
+    background-color: aliceblue !important;
+    border-radius: 5px !important;
+    border: 1.5px solid rgb(198, 198, 198) !important;
+    /* height: 100vh; */
+}
+@media screen and (min-device-width: 768px) {
+    .loginform {
+        width: 500px;
+        position: fixed;
+        right: 150px;
+        top: 120px;
+    }
+}

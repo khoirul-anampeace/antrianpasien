@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PoliController;
@@ -20,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 // Dashboard
 Route::get('/', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // Pasien
 Route::get('/pasien', [PasienController::class, 'index']);
@@ -49,3 +52,9 @@ Route::post('/pembayaran/store', [PembayaranController::class, 'store']);
 Route::get('/pembayaran/show/{id}', [PembayaranController::class, 'show']);
 Route::post('/pembayaran/update/{id}', [PembayaranController::class, 'update']);
 Route::get('/pembayaran/destroy/{id}', [PembayaranController::class, 'destroy']);
+
+// Admin
+Route::get('/admin', [AdminController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'index']);
+// Route::get('/login', view('page.login'));

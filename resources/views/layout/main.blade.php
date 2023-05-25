@@ -127,6 +127,12 @@
                             <span>Pembayaran</span>
                         </a>
                     </li>
+                    <li class="side-nav-item">
+                        <a href="{{ url('/admin') }}" class="side-nav-link">
+                            <i class='bx bxs-shield-alt-2'></i>
+                            <span>Admin</span>
+                        </a>
+                    </li>
                 </ul>
                 <!-- End Sidebar -->
                 <!-- End Sidebar -->
