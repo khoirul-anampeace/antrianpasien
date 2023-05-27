@@ -46,6 +46,7 @@ Route::delete('/pasien/delete/{id}', [ApiPasienController::class, 'destroy']);
 // Dokter
 Route::get('/dokter', [ApiDokterController::class, 'index']);
 Route::post('/dokter/add', [ApiDokterController::class, 'store']);
+Route::get('/dokter/filter/{kode}', [ApiDokterController::class, 'filter']);
 Route::get('/dokter/show/{id}', [ApiDokterController::class, 'show']);
 Route::put('/dokter/update/{id}', [ApiDokterController::class, 'update']);
 Route::delete('/dokter/delete/{id}', [ApiDokterController::class, 'destroy']);

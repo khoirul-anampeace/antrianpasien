@@ -86,6 +86,15 @@ class ApiDokterController extends Controller
         }
     }
 
+    public function filter($kode)
+    {
+        $data = Dokter::where('kode_poli', '=', $kode)->get();
+        if ($data) {
+            return ApiFormatter::createApi(200, true, $data);
+        } else {
+            return  ApiFormatter::createApi(400, false);
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      *
