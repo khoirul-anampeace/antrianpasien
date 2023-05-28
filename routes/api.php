@@ -60,6 +60,7 @@ Route::delete('/pembayaran/delete/{id}', [ApiPembayaranController::class, 'destr
 
 // Book
 Route::get('/book', [ApiBookController::class, 'index']);
+Route::get('/book/detail/{nik}', [ApiBookController::class, 'detail']);
 Route::post('/book/add', [ApiBookController::class, 'store']);
 Route::get('/book/show/{id}', [ApiBookController::class, 'show']);
 Route::put('/book/update/{id}', [ApiBookController::class, 'update']);
