@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
@@ -55,7 +56,11 @@ Route::post('/pembayaran/update/{id}', [PembayaranController::class, 'update']);
 Route::get('/pembayaran/destroy/{id}', [PembayaranController::class, 'destroy']);
 
 // Book
-Route::get('/semuabook', [BookController::class, 'index']);
+Route::get('/book', [BookController::class, 'index']);
+Route::get('/bookantriansekarang', [BookController::class, 'antriansekarang']);
+Route::get('/bookantrianselesai', [BookController::class, 'antrianselesai']);
+Route::get('/book/panggil/{id}', [BookController::class, 'panggil']);
+Route::get('/book/lewati/{id}', [BookController::class, 'lewati']);
 
 // Admin
 Route::get('/admin', [AdminController::class, 'index']);
@@ -67,3 +72,6 @@ Route::get('/admin/destroy/{id}', [AdminController::class, 'destroy']);
 
 Route::get('/login', [LoginController::class, 'index']);
 // Route::get('/login', view('page.login'));
+
+// DashboardAntrean
+Route::get('/antrian', [AntrianController::class, 'index']);

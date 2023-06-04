@@ -82,9 +82,13 @@ class ApiBookController extends Controller
             $now    = date('Y-m-d');
             $value  = DB::table('book')
                 ->selectRaw('max(no_antrian) as nomor')
-                ->where('tanggal_booking', $now)
-                ->where('kode_poli', $request->kode_poli)
+                ->where('tanggal_booking', $request->tanggal_booking)
+                // ->where('kode_poli', $request->kode_poli)
                 ->first();
+            $cekpasien  = DB::table('pasien')
+                ->where('nik', $request->nik)
+                ->count();
+
 
             $book = Book::create([
                 'kode_registrasi' => date('ymdhis'),
@@ -99,13 +103,17 @@ class ApiBookController extends Controller
 
             $data = Book::where('id', '=', $book->id)->first();
 
-            // table pasien
-            Pasien::create([
-                'nik' => $request->nik,
-                'nama_pasien' => $request->nama_pasien,
-                'tanggal_lahir' => $request->tanggal_lahir,
-                'no_kontak' => $request->no_kontak
-            ]);
+
+            if ($cekpasien < 1) {
+                // table pasien
+                Pasien::create([
+                    'nik' => $request->nik,
+                    'nama_pasien' => $request->nama_pasien,
+                    'tanggal_lahir' => $request->tanggal_lahir,
+                    'no_kontak' => $request->no_kontak
+                ]);
+            } else {
+            }
 
             if ($data) {
                 return ApiFormatter::createApi(200, true, $data);

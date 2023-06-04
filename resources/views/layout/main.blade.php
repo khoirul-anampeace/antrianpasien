@@ -89,20 +89,23 @@
                         <div class="collapse" id="sidebarDashboards">
                             <ul class="side-nav-second-level">
                                 <li>
-                                    <a href="">Poli</a>
+                                    <a href="{{ url('/bookantriansekarang') }}">Antrian Sekarang</a>
                                 </li>
                                 <li>
-                                    <a href="">Poli</a>
+                                    <a href="{{ url('/bookantrianselesai') }}">Antrian Selesai</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/book') }}">Semua Book</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li class="side-nav-item">
-                        <a href="{{ url('/semuabook') }}" class="side-nav-link">
+                    {{-- <li class="side-nav-item">
+                        <a href="{{ url('/book') }}" class="side-nav-link">
                             <i class='bx bxs-book'></i>
                             <span>Semua Book</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="side-nav-item">
                         <a href="{{ url('/pasien') }}" class="side-nav-link">
                             <i class='bx bxs-user'></i>

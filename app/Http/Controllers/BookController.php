@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,18 +13,79 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $now    = date('Y-m-d');
+        $filter['q'] = $request->query('q');
         $data = DB::table('book')
             ->join('poli', 'poli.kode_poli', '=', 'book.kode_poli')
             ->join('dokter', 'dokter.kode_dokter', '=', 'book.kode_dokter')
             ->join('pembayaran', 'pembayaran.kode_pembayaran', '=', 'book.kode_pembayaran')
             ->join('pasien', 'pasien.nik', '=', 'book.nik')
             ->select('book.*', 'poli.nama_poli', 'dokter.nama_dokter', 'pembayaran.jenis_pembayaran', 'pasien.nama_pasien')
+            // ->where('tanggal_booking', '=', $now)
+            ->where(function ($data) use ($filter) {
+                $data->where('tanggal_booking', '=', $filter['q']);
+            })
             ->get();
-        return view('page.semuabook')->with(['data' => $data]);
+        return view('page.book')->with(['data' => $data, 'q' => $filter['q'], 'tanggal' => $now]);
     }
 
+
+    public function antriansekarang(Request $request)
+    {
+        $now    = date('Y-m-d');
+        $filter['q'] = $request->query('q');
+        $data = DB::table('book')
+            ->join('poli', 'poli.kode_poli', '=', 'book.kode_poli')
+            ->join('dokter', 'dokter.kode_dokter', '=', 'book.kode_dokter')
+            ->join('pembayaran', 'pembayaran.kode_pembayaran', '=', 'book.kode_pembayaran')
+            ->join('pasien', 'pasien.nik', '=', 'book.nik')
+            ->select('book.*', 'poli.nama_poli', 'dokter.nama_dokter', 'pembayaran.jenis_pembayaran', 'pasien.nama_pasien')
+            ->where('tanggal_booking', '=', $now)
+            ->where('status', '=', 'Menuggu konfirmasi')
+            ->orWhere('status', '=', 'Dipanggil')
+            // ->where(function ($data) use ($filter) {
+            //     $data->where('tanggal_booking', '=', $filter['q']);
+            // })
+            ->get();
+        return view('page.bookantriansekarang')->with(['data' => $data, 'q' => $filter['q'], 'tanggal' => $now]);
+    }
+
+    public function antrianselesai(Request $request)
+    {
+        $now    = date('Y-m-d');
+        $filter['q'] = $request->query('q');
+        $data = DB::table('book')
+            ->join('poli', 'poli.kode_poli', '=', 'book.kode_poli')
+            ->join('dokter', 'dokter.kode_dokter', '=', 'book.kode_dokter')
+            ->join('pembayaran', 'pembayaran.kode_pembayaran', '=', 'book.kode_pembayaran')
+            ->join('pasien', 'pasien.nik', '=', 'book.nik')
+            ->select('book.*', 'poli.nama_poli', 'dokter.nama_dokter', 'pembayaran.jenis_pembayaran', 'pasien.nama_pasien')
+            // ->where('tanggal_booking', '=', $now)
+            ->where('status', '=', 'Selesai')
+            // ->where(function ($data) use ($filter) {
+            //     $data->where('tanggal_booking', '=', $filter['q']);
+            // })
+            ->get();
+        return view('page.bookantrianselesai')->with(['data' => $data, 'q' => $filter['q'], 'tanggal' => $now]);
+    }
+
+    public function panggil($id)
+    {
+        DB::table('book')
+            ->where('id', $id)
+            ->update(['status' => 'Dipanggil']);
+        return redirect('/bookantriansekarang');
+    }
+    public function lewati($id)
+    {
+        DB::table('book')
+            ->where('id', $id)
+            ->update(['status' => 'Selesai']);
+        return redirect('/bookantriansekarang');
+    }
     /**
      * Show the form for creating a new resource.
      *
