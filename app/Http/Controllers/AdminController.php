@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -14,7 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $data = Admin::all();
+        $data = User::all();
         return view('page.admin')->with(['data' => $data]);
     }
 
@@ -26,8 +28,8 @@ class AdminController extends Controller
     public function create()
     {
 
-        $kode = Admin::kode();
-        return view('page.createadmin')->with(['kode' => $kode]);
+        // $kode = Use::kode();
+        return view('page.createadmin');
     }
 
     /**
@@ -38,9 +40,14 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except(['_token']);
+        $data = $request->except('_token');
 
-        Admin::insert($data);
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ];
+        User::create($data);
 
         return redirect('/admin');
     }
@@ -53,7 +60,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        $data = Admin::findOrFail($id);
+        $data = User::findOrFail($id);
         return view('page.showadmin')->with(['data' => $data]);
     }
 
@@ -77,9 +84,15 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $item = Admin::findOrFail($id);
+        $user = User::findOrFail($id);
         $data = $request->except(['_token']);
-        $item->update($data);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+
+
+        $data = User::where('id', '=', $user->id)->get();
         return redirect('/admin');
     }
 
@@ -91,7 +104,7 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $item = Admin::findOrFail($id);
+        $item = User::findOrFail($id);
         $item->delete();
         return redirect('/admin');
     }

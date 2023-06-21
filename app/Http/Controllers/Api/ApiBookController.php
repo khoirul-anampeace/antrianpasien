@@ -37,6 +37,8 @@ class ApiBookController extends Controller
             ->join('pasien', 'pasien.nik', '=', 'book.nik')
             ->select('book.*', 'poli.nama_poli', 'dokter.nama_dokter', 'pembayaran.jenis_pembayaran', 'pasien.nama_pasien')
             ->where('book.nik', '=', $nik)
+            ->where('book.status', '=', "Menuggu konfirmasi")
+            ->orWhere('book.status', '=', 'Dipanggil')
             ->first();
 
         if ($data) {

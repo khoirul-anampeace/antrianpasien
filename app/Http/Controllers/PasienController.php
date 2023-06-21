@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PasienController extends Controller
 {
@@ -25,6 +26,24 @@ class PasienController extends Controller
      */
     public function create()
     {
+    }
+
+
+    public function detail($id)
+    {
+        $pasien = Pasien::findOrFail($id);
+        $data = DB::table('book')
+            ->join('poli', 'poli.kode_poli', '=', 'book.kode_poli')
+            ->join('dokter', 'dokter.kode_dokter', '=', 'book.kode_dokter')
+            ->join('pembayaran', 'pembayaran.kode_pembayaran', '=', 'book.kode_pembayaran')
+            ->join('pasien', 'pasien.nik', '=', 'book.nik')
+            ->select('book.*', 'poli.nama_poli', 'dokter.nama_dokter', 'pembayaran.jenis_pembayaran', 'pasien.nama_pasien')
+            ->where('book.nik', '=', $pasien->nik)
+            // ->where(function ($data) use ($filter) {
+            //     $data->where('tanggal_booking', '=', $filter['q']);
+            // })
+            ->get();
+        return view('page.detailpasien')->with(['pasien' => $pasien, 'data' => $data]);
     }
 
     /**

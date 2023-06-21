@@ -57,6 +57,8 @@
                             </h1>
                             <h2>{{ $data->no_antrian }}</h2>
                             <p class="koreg">Kode Registrasi {{ $data->kode_registrasi }}</p>
+                            <p class="koreg" style="text-transform: capitalize">Nama Pasien {{ $data->nama_pasien }}
+                            </p>
                             <p class="poli"> <b>Poli {{ $data->nama_poli }}</b></p>
                             <p class="detail">
                                 Bagi pasien yang memiliki nomor antrian tersebut diharap untuk segera menuju ke loket.
@@ -72,6 +74,13 @@
     <script src="{{ asset('assets/js/script.js') }}"></script>
     {{-- <script src="https://kit.fontawesome.com/62bf956e5e.js" crosssorigin="anonymous"></script> --}}
     <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function() {
+                location.reload();
+            }, 500);
+        })
+    </script>
 </body>
 
 </html>

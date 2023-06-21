@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,6 +17,7 @@ class BookController extends Controller
     public function index(Request $request)
     {
 
+        date_default_timezone_set('Asia/Jakarta');
         $now    = date('Y-m-d');
         $filter['q'] = $request->query('q');
         $data = DB::table('book')
@@ -24,10 +26,6 @@ class BookController extends Controller
             ->join('pembayaran', 'pembayaran.kode_pembayaran', '=', 'book.kode_pembayaran')
             ->join('pasien', 'pasien.nik', '=', 'book.nik')
             ->select('book.*', 'poli.nama_poli', 'dokter.nama_dokter', 'pembayaran.jenis_pembayaran', 'pasien.nama_pasien')
-            // ->where('tanggal_booking', '=', $now)
-            ->where(function ($data) use ($filter) {
-                $data->where('tanggal_booking', '=', $filter['q']);
-            })
             ->get();
         return view('page.book')->with(['data' => $data, 'q' => $filter['q'], 'tanggal' => $now]);
     }
@@ -35,6 +33,7 @@ class BookController extends Controller
 
     public function antriansekarang(Request $request)
     {
+        date_default_timezone_set('Asia/Jakarta');
         $now    = date('Y-m-d');
         $filter['q'] = $request->query('q');
         $data = DB::table('book')
@@ -55,6 +54,7 @@ class BookController extends Controller
 
     public function antrianselesai(Request $request)
     {
+        date_default_timezone_set('Asia/Jakarta');
         $now    = date('Y-m-d');
         $filter['q'] = $request->query('q');
         $data = DB::table('book')
@@ -149,6 +149,8 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Book::findOrFail($id);
+        $item->delete();
+        return redirect('/book');
     }
 }

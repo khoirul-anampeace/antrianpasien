@@ -37,6 +37,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
+
+
 <body class="loading"
     data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
     <!-- Begin page -->
@@ -180,7 +182,9 @@
                                         class="rounded-circle">
                                 </span>
                                 <span>
-                                    <span class="account-user-name">Khoirul Anam</span>
+                                    <span class="account-user-name">
+                                        {{ auth()->user()->name }}
+                                    </span>
                                     <span class="account-position">Admin</span>
                                 </span>
                             </a>
@@ -191,7 +195,7 @@
                                     <h6 class="text-overflow m-0">Action</h6>
                                 </div>
                                 <!-- item-->
-                                <a href="logout.php" class="dropdown-item notify-item">
+                                <a href="{{ url('sesi/logout') }}" class="dropdown-item notify-item">
                                     <i class='bx bxs-log-out-circle'></i>
                                     <span>Logout</span>
                                 </a>

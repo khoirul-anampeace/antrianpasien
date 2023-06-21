@@ -20,26 +20,26 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="inputkodedokter" class="form-label">Kode Admin</label>
-                                <input type="text" name="kode_admin" class="form-control" id="inputkodedokter"
-                                    placeholder="Kode Admin" required autocomplete="off" value="{{ $kode }}"
-                                    readonly>
-                            </div>
-                            <div class="col-md-6 mb-3">
                                 <label for="inputNama" class="form-label">Nama Admin</label>
-                                <input type="text" name="nama_admin" class="form-control" id="inputNama"
-                                    placeholder="Nama Admin" required autocomplete="off">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="inputNama" class="form-label">Username</label>
-                                <input type="text" name="username" class="form-control" id="inputNama"
-                                    placeholder="Username" required autocomplete="off">
+                                <input type="text" name="name" class="form-control" id="inputNama" placeholder=""
+                                    required autocomplete="off">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="inputNama" class="form-label">Password</label>
-                                <input type="text" name="password" class="form-control" id="inputNama"
-                                    placeholder="Password" required autocomplete="off">
+                                <input type="text" name="password" class="form-control" id="inputNama" placeholder=""
+                                    required autocomplete="off">
                             </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="inputNama" class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control" id="inputNama" placeholder=""
+                                    required autocomplete="off">
+                            </div>
+                            {{-- <div class="col-md-6 mb-3">
+                                <label for="inputNama" class="form-label">Username</label>
+                                <input type="text" name="username" class="form-control" id="inputNama"
+                                    placeholder="Username" required autocomplete="off">
+                            </div> --}}
+
                             <div class="col-md-12 col-sm-6">
                                 <a href="{{ url('/admin') }}" class="btn btn-secondary">Batalkan</a>
                                 <button type="submit" class="btn btn-primary float-end">Tambah</button>

@@ -16,23 +16,28 @@
         <div class="col-xl-12 col-lg-12">
             <div class="card card-h-100">
                 <div class="card-body">
-                    <form action="{{ url('admin/update/' . $data->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="inputNama" class="form-label">Nama Admin</label>
                                 <input type="text" name="name" class="form-control" id="inputNama" placeholder=""
-                                    required autocomplete="off" value="{{ $data->name }}">
+                                    required autocomplete="off">
                             </div>
-                            {{-- <div class="col-md-6 mb-3">
-                                <label for="inputNama" class="form-label">Password</label>
-                                <input type="text" name="password" class="form-control" id="inputNama" placeholder=""
-                                    required autocomplete="off" value="{{ $data->password }}">
-                            </div> --}}
                             <div class="col-md-6 mb-3">
                                 <label for="inputNama" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control" id="inputNama" placeholder=""
-                                    required autocomplete="off" value="{{ $data->email }}">
+                                    required autocomplete="off">
+                            </div>
+                            {{-- <div class="col-md-6 mb-3">
+                                <label for="inputNama" class="form-label">Username</label>
+                                <input type="text" name="username" class="form-control" id="inputNama"
+                                    placeholder="Username" required autocomplete="off">
+                            </div> --}}
+                            <div class="col-md-6 mb-3">
+                                <label for="inputNama" class="form-label">Password</label>
+                                <input type="text" name="password" class="form-control" id="inputNama" placeholder=""
+                                    required autocomplete="off">
                             </div>
                             <div class="col-md-12 col-sm-6">
                                 <a href="{{ url('/admin') }}" class="btn btn-secondary">Batalkan</a>

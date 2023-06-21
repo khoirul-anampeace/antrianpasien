@@ -16,20 +16,27 @@
 <body>
     <section>
         <div class="loginform">
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger" role="alert">
+                    Login Gagal, Periksa Email dan Password Anda!
+                    {{ $error }}
+                </div>
+            @endforeach
             <h1>Login</h1>
-            <form action="">
+            <form action="{{ url('/sesi/login') }}" method="POST">
+                @csrf
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Masukkan username anda">
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" value="{{ Session::get('email') }}"
+                        id="exampleFormControlInput1" placeholder="" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Password</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Masukkan password anda">
+                    <input type="text" name="password" class="form-control" id="exampleFormControlInput1"
+                        placeholder="" required>
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-primary" type="submit">LOGIN</button>
+                    <button name="submit" class="btn btn-primary" type="submit">LOGIN</button>
                 </div>
             </form>
         </div>

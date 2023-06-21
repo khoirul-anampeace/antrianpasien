@@ -13,25 +13,25 @@
                     {{-- <a href="{{ url('/dokter/create') }}" class="btn btn-primary">Tambah Data</a> --}}
                     <!-- <form class="d-flex">
 
-                                                                                                                                                                                                                                                                                            <div class="input-group">
+                                                                                                                                                                                                                                                                                                <div class="input-group">
 
-                                                                                                                                                                                                                                                                                                <input type="text" class="form-control form-control-light" id="dash-daterange">
+                                                                                                                                                                                                                                                                                                    <input type="text" class="form-control form-control-light" id="dash-daterange">
 
-                                                                                                                                                                                                                                                                                                <span class="input-group-text bg-primary border-primary text-white">
+                                                                                                                                                                                                                                                                                                    <span class="input-group-text bg-primary border-primary text-white">
 
-                                                                                                                                                                                                                                                                                                    <i class="mdi mdi-calendar-range font-13"></i>
+                                                                                                                                                                                                                                                                                                        <i class="mdi mdi-calendar-range font-13"></i>
 
-                                                                                                                                                                                                                                                                                                </span>
+                                                                                                                                                                                                                                                                                                    </span>
 
-                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                </div>
 
-                                                                                                                                                                                                                                                                                            <a href="javascript: void(0);" class="btn btn-primary ms-2">
+                                                                                                                                                                                                                                                                                                <a href="javascript: void(0);" class="btn btn-primary ms-2">
 
-                                                                                                                                                                                                                                                                                                <i class="mdi mdi-autorenew"></i>
+                                                                                                                                                                                                                                                                                                    <i class="mdi mdi-autorenew"></i>
 
-                                                                                                                                                                                                                                                                                            </a>
+                                                                                                                                                                                                                                                                                                </a>
 
-                                                                                                                                                                                                                                                                                        </form> -->
+                                                                                                                                                                                                                                                                                            </form> -->
 
                 </div>
 
@@ -83,7 +83,7 @@
                             <td>{{ $pasien->no_kontak }}</td>
                             <td class="table-action">
 
-                                <a href="{{ url('/pasien/show/' . $pasien->id) }}" class="btn btn-success">Detail</a>
+                                <a href="{{ url('/pasien/detail/' . $pasien->id) }}" class="btn btn-success">Detail</a>
                             </td>
 
                         </tr>
