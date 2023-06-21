@@ -7,7 +7,7 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                 </div>
-                <h4 class="page-title">Edit Data Dokter</h4>
+                <h4 class="page-title">Edit Data Poli</h4>
             </div>
         </div>
     </div>

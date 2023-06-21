@@ -64,6 +64,7 @@
                         <th>Tgl Lahir</th>
 
                         <th>No Kontak</th>
+
                         <th>Aksi</th>
                     </tr>
 
